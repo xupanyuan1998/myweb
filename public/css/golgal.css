@@ -1,0 +1,128 @@
+.title-top{
+    padding: 80px 0 30px 0;
+    font-size:40px;
+    color: #fff;
+    font-weight: normal;
+}
+.nav{
+    background:#f3726d ;
+}
+.nav a{
+    margin: 20px 5px 20px 0;
+    color: #fff;
+    border: 1px solid #f1362f;
+    font-size: 12px;
+    background:#f3726d;
+}
+.nav-nav{
+    margin: 0 auto;
+    padding:20px 70px;
+}
+.nav-nav a{
+    color: #505050;
+}
+.nav-nav a.a-color{
+    font-weight: bold;
+}
+/*header css*/
+.bg-footer{
+    background: #202020;
+    margin-bottom: 0;
+}
+.footer{
+    color: white;
+}
+.footer ul li{
+    list-style: none;
+    padding: 5px;
+    border-bottom: 1px dashed #303030;
+}
+.footer ul li h6{
+    color: #505050;
+}
+.footer-right{
+    border-bottom: 1px dashed #303030;
+    height: 100%;
+    overflow: hidden;
+    padding: 10px;
+}
+.footer-right a{
+    color: #fff;
+}
+.footer-p{
+    margin-top: 20px;
+}
+.footer-p a{
+    font-size: 12px;
+    color: white;
+    margin-right: 20px;
+}
+.footer-page{
+    background: #111;
+}
+/*footer css*/
+.con{
+    background: white;
+    padding: 20px;
+    margin-top: 40px;
+}
+.con .border-bottom,
+.footer .border-bottom{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
+    position: relative;
+}
+.con .border-bottom:after ,
+.footer .border-bottom:after{
+    content: '';
+    width: 70px;
+    height: 1px;
+    background: #c9302c;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+}
+.list-group{
+    border-shadow:0 0 0 ;
+}
+.list-group .list-group-item{
+    border:none;
+    background: #f3726d;
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.con-content{
+    background: #ebebeb;
+}
+.thon-content1{
+    padding-bottom: 20px;
+    margin-top: 40px;
+    margin-right: 10px;
+}
+.thon-content1 h3{
+    text-align: center;
+    font-size: 26px;
+}
+.thon-content1 h6{
+    text-align: center;
+    font-size: 12px;
+    color: #959ec0;
+}
+.thon-content1 h6 b{
+    color: #f4645f;
+}
+.thon-content1 img{
+    text-align: center;
+}
+.thon-content1  .caption{
+    /* padding: 0 45px;*/
+    margin-top: 20px;
+}
+.caption p span{
+    color: #f4645f;
+}
+*{
+    margin: 0;
+    padding: 0;
+}

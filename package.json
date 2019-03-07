@@ -1,0 +1,28 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "a blog",
+  "main": "app.js",
+  "scripts": {
+    "test": "jkdggdh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "a blog git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "fgdsg",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "cookies": "^0.7.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-static": "^1.2.6",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.16",
+    "swig": "^1.4.2"
+  }
+}

@@ -1,0 +1,44 @@
+<%include head.ejs%>
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="text" class="form-control" id="txt" placeholder="类别">
+        </div>
+        <p class="text-center   btn-default" style="display: none" id="bg-su">agresrheht</p>
+        <p class="text-center  btn-warning" style="display: none" id="bg-d">eryhgrehreh</p>
+        <b  class="btn btn-default" id="btn">Submit</b>
+
+    </form>
+</div>
+<script>
+    $('#btn').on('click',function () {
+	        if ($('#txt').val() === '') {
+		        $('#bg-d').html('分类信息不能为空!').fadeIn().fadeOut().fadeIn().fadeOut();
+		        $('#container').find('div').addClass('has-error');
+        }else {
+		        $('#container').find('div').removeClass('has-error').addClass('has-success');
+        	$.ajax({
+                type:'post',
+                url:'/admin/category-add',
+                data:{
+                	name:$('#txt').val()
+                },
+                success:function (success) {
+                	console.log(success)
+                  if (success.code!=1) {
+	                  $('#bg-d').html('添加失败').fadeIn().fadeOut().fadeIn().fadeOut();
+                  }else{
+	                  $('#bg-d').html('添加成功').fadeIn().fadeOut().fadeIn().fadeOut();
+                  }
+                },
+                error:function (error) {
+                    console.log(error)
+                }
+            })
+        }
+    });
+
+</script>
+
+<%include footer.ejs%>

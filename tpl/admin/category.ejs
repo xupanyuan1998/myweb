@@ -1,0 +1,101 @@
+<%include head.ejs%>
+<div class="container">
+    <table class="table table-hover text-center">
+        <tr>
+            <td>类别</td>
+            <td>分类id</td>
+            <td>管理</td>
+        </tr>
+        <%for (var i=0;i<data.length;i++){%>
+        <tr class="box">
+            <td><%=data[i].name%></td>
+            <td><%=data[i]._id%></td>
+            <td>
+                <a  class="btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">修改</a>
+                <a href="javascript:;">删除</a>
+                <input type="hidden" class="oldva" value="<%=data[i]._id%>">
+                <input type="hidden" class="oldv" value="<%=data[i].name%>">
+            </td>
+        </tr>
+        <%}%>
+    </table>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Recipient:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="sub">确认修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var oldvalue='',id='';
+	//删除分类
+	$('.box').find('a:nth-child(2)').on('click',function () {
+        var con=window.confirm('确定要删除吗？');
+        if (con){
+            $.ajax({
+                type:'get',
+                url:'/admin/category/del',
+                data:{
+                    id:$(this).parent().find('input.oldva').val()
+                },
+                success:function (success) {
+                    console.log(success)
+                   if (!success.code) {
+                       alert(success.msg)
+                       window.location.reload();
+                   }
+                },
+                error:function (error) {
+                    console.log(error);
+                }
+            })
+        }
+    })
+	//修改分类
+    $('.box').find('a:nth-child(1)').on('click',function () {
+        oldvalue=$(this).parent().find('input.oldv').val();
+        id=$(this).parent().find('input.oldva').val();
+    })
+    $('#recipient-name').on('focus',function () {
+        $(this).val('');
+    })
+    $('#sub').on('click',function () {
+        if ( $('#recipient-name').val()==='') {
+	        $('#recipient-name').val('输入内容不能为空').fadeOut().fadeIn();
+        }else if ($('#recipient-name').val()===oldvalue) {
+	        $('#recipient-name').val('修改的名称不能和之前一样').fadeOut().fadeIn();
+        }else{
+	      /*  $('#myModal').modal('toggle')*/
+        	$.ajax({
+                type:'get',
+                url:'/admin/category/modify',
+                data:{
+                	id:id,
+                    name:$('#recipient-name').val()
+                },
+                success:function (succes) {
+                   if (succes.code===4){
+                   	window.location.reload();
+                   }
+                },
+                error:function (error) {
+                    console.log(error)
+                }
+            })
+        }
+    })
+</script>
+<%include footer.ejs%>
