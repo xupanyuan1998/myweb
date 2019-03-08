@@ -1,0 +1,12 @@
+<% include heaad.ejs %>
+<div class="container">
+    <div class="col-sm-7 col-xs-12 col-md-7 fl">
+        <div class="thumbnail">
+            <h3 class="text-center"><%= info2.title %></h3>
+            <span class="text-center">作者：<em>admin</em>时间：<em> <%= info2.data.toLocaleDateString() %></em>阅读：<em><%= info2.read %></em> 评论：<em><%= info2.comments.length %></em></span>
+            <p><%= info2.int %></p>
+        </div>
+    </div>
+    <% include right.ejs %>
+</div>
+<% include footer.ejs %>

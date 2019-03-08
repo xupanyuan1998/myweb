@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="public/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="public/css/bootstrap.css">
+    <script src="public/js/jquery.1.10.2.min.js"></script>
+    <script src="public/js/bootstrap.js"></script>
+    <script src="public/js/bootstrap.min.js"></script>
+    <script src="public/js/index.js"></script>
+    <style>
+        em,b,i{
+            font-style: normal;
+        }
+        .top {
+            position: relative;
+        }
+
+        .ban {
+            width: 100%;
+            height: auto;
+            min-width: 960px;
+            min-height: 205px;
+        }
+        .fl{
+            float: left;
+        }
+        .lo {
+            width: 150px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -75px;
+        }
+        @media (max-width: 960px) {
+            .top {
+                height: 205px;
+            }
+            .ban {
+                position: absolute;
+                left: 50%;
+                margin-left: -480px;
+            }
+        }
+        .main{
+            background: #ececec;
+            padding-top: 20px;
+        }
+        .navbar {
+            margin-bottom: 0;
+        }
+        .or{
+            background: #a0afb9;
+            color: #ffffff;
+        }
+        .thumbnail h3,
+        .thumbnail span,
+        .thumbnail p,
+        .thumbnail h4,
+        .thumbnail a{
+            margin: 10px 20px;
+        }
+        .thumbnail a{
+            border-radius: 0;
+            padding: 5px 10px;
+        }
+        .thumbnail span{
+            display: block;
+        }
+        .thumbnail span em{
+            color: #269abc;
+            font-size: 12px;
+        }
+        .thumbnail p.two{
+            padding: 0 15px
+        }
+        .main-foot i{
+            display: inline-block;
+            width: 37%;
+            text-align: left;
+            margin: 10px 0;
+        }
+        .main-foot span{
+            display: inline-block;
+            width: 37%;
+            text-align: right;
+            margin: 10px 0;
+        }
+        .main-foot b{
+            display: inline-block;
+            width: 20%;
+            margin: 10px 0;
+        }
+
+        .main h3.border-bottom {
+            padding: 10px 0;
+            border-bottom: #a0afb9 1px solid;
+            position: relative;
+            font-size: 18px;
+        }
+        .main h3.border-bottom:after{
+            content: '';
+            border-bottom: #f4655f 1px solid;
+            width: 100px;
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+        }
+        .thumbnail p.red{
+            color: red;
+        }
+        .thumbnail p a{
+            text-decoration: underline;
+            padding: 0;
+            margin: 0;
+        }
+        .form-horizontal{
+            padding: 10px 20px;
+        }
+        .pad-right1{
+            padding: 0;
+        }
+        .right-load{
+            width: 100%;
+        }
+        .right-now{
+            width: 100%;
+            text-align: right;
+        }
+        .right-now a{
+            text-decoration: underline;
+            color: #46b8da;
+            padding: 0;
+            margin: 0;
+        }
+        .right-last a{
+            color: red;
+        }
+
+        .last {
+            background: #111111;
+        }
+
+        .last p {
+            padding: 25px 0 15px 0;
+            color: #959595;
+        }
+        #codeshow{
+            height: 50px;
+            background: #999;
+            color: #239ae6;
+            text-align: center;
+            padding: 10px 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="top text-center">
+    <img class="ban" src="public/image/timg.jpg" alt="ban">
+    <img class="lo" src="public/image/logo.jpg" alt="LOGOL">
+</div>
+<!--banner-end-->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/index">首页</a>
+        </div>
+        <div class="collapse navbar-collapse  text-center" id="bs-example-navbar-collapse-1">
+            <ul class="text-center nav navbar-nav">
+                <%for(var i=0;i<name.length;i++){%>
+                <li><a href="#"><%=name[i].name%></a></li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+</nav><!--nav-end-->

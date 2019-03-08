@@ -1,0 +1,87 @@
+<div class="col-sm-4 col-xs-12 col-md-4 fl">
+    <%if(usersinfo._id){%>
+    <div class="thumbnail" id="admin" >
+        <h3 class="border-bottom">用户信息</h3>
+        <div class="caption right-1">
+            <p><%=usersinfo.username%></p>
+            <%if(usersinfo.isAdmin){%>
+                <p class="red">你好，你是管理员 <a class="red1" href="/admin/userslist">你可以点击这里进入管理</a></p>
+            <%} else{%>
+                <p class="red">你好，欢迎登录 </p>
+            <%}%>
+            <p><a class="red1" href="javascript:;" id="logout">退出</a></p>
+        </div>
+    </div>
+    <%} else{%>
+        <div class="thumbnail" id="login" >
+            <h3 class="border-bottom">下载</h3>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label pad-right1">用户名:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label pad-right1">密码:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button  class="btn btn-default right-load or" id="logino">登录</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="right-now">还没注册？<a href="JavaScript:;" id="admin1">马上注册</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="thumbnail" id="zhuce" style="display: none">
+            <h3 class="border-bottom">文档</h3>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label pad-right1">用户名:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Email" id="user">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label pad-right1">密码:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control"  placeholder="Password" id="pass">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label pad-right1">确认:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control"  placeholder="Password" id="repass">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button  class="btn btn-default right-load or" id="reg">注册</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="right-now">已有帐号？<a href="JavaScript:;" id="login1">马上登录</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%}%>
+    <p id="codeshow"></p>
+    <div class="thumbnail">
+        <h3 class="border-bottom">社区</h3>
+        <div class="caption right-last">
+            <p><a class="red" href="javascript:;">广州本田</a></p>
+            <p><a class="red" href="javascript:;">广州本田</a></p>
+        </div>
+    </div>
+</div>
