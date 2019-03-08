@@ -44,19 +44,6 @@ router.get('/content',function (req,res) {
 			info2.save();
 			res.render('main/content.ejs',{name:info,info2:info2,usersinfo:req.usersinfo})
 		})
-
 	})
-
-	/*var id=req.query.id;
-	category.find().then(function (info2) {
-		article.findOne({
-			_id:id
-		}).then(function (info) {
-			info.read++;
-			info.save();
-
-			res.render('main/content.ejs',{info2:info2, info:info,usersinfo:req.usersinfo})
-		})
-	})*/
 })
 module.exports=router;

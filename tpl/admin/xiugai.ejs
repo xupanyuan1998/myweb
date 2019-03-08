@@ -1,0 +1,71 @@
+<% include head.ejs %>
+<div class="container form-horizontal">
+    <form>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">标题</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="标题" value="<%= info2.title %>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">简介</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputPassword3" placeholder="简介" value="<%= info2.int %>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">内容</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" rows="3" style="resize: none"
+                          id="content"><%= info2.content %></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">文章类别</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="sel">
+                    <% for(var i = 0;i < data.length;i++){ %>
+                        <option value="<%= data[i]._id %>"><%= data[i].name %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" id="buv" value="<%= info2._id %>">
+                <a class="btn btn-default" id="btn">提交</a>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+	$('#btn').on('click', function () {
+		var title = $('#inputEmail3').val(),
+			int = $('#inputPassword3').val(),
+			concent = $('#content').val(),
+			sel = $('#sel').val(),
+			names = $('#sel').find('option:selected').text(),
+			id = $('#buv').val();
+		$.ajax({
+			type: 'post',
+			url: '/admin/article/xiugai',
+			data: {
+				title: title,
+				int: int,
+				concent: concent,
+				sel: sel,
+				names: names,
+				id: id
+			},
+			success: function (success) {
+				alert('修改成功')
+			},
+			error: function (error) {
+				console.log(error)
+			}
+
+		})
+	})
+</script>
+<% include footer.ejs %>

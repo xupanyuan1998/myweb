@@ -15,11 +15,12 @@
             <td><%=name[i].content%></td>
             <td><%=name[i].names%></td>
             <td>
-                <a href="javascript:;">修改</a>
+                <a href="/admin/article/xiugai?id=<%= name[i]._id %>">修改</a>
                 <a href="/admin/article/del?id=<%=name[i]._id%>">删除</a>
             </td>
         </tr>
         <%}%>
     </table>
 </div>
+
 <%include footer.ejs%>

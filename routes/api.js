@@ -19,7 +19,8 @@ api.use(function (req,res,next) {
 //注册
 /*当访问的目录中带有/user/res，打印一下给后台的请求     req.body：请求方式为post的时候获取前端请求的数据的方法*/
 api.post('/user/res',function (req,res) {
-	console.log(req.body);/*{ username: 'qqq', password: '111', repassword: '1111' }*/
+	/*console.log(req.body)*/
+	;/*{ username: 'qqq', password: '111', repassword: '1111' }*/
 	var username=req.body.username;
 	var password=req.body.password;
 	var repassword=req.body.repassword;
@@ -91,7 +92,6 @@ api.post('/user/login',function (req,res) {
 		username:username,
 		password:password
 	}).then(function (info) {
-		console.log(info);
 		if (!info){
 			reponsetext.code=7;
 			reponsetext.msg='用户名不存在';

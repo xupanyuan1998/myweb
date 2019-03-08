@@ -91,7 +91,6 @@ router.get('/category/modify', function (req, res) {
 			return category.update({_id: id}, {name: name});
 		}
 	}).then(function (newinfo) {
-		console.log(newinfo)
 		jsonadd.code = 4;
 		jsonadd.msg = '修改成功';
 		res.send(jsonadd)
@@ -128,7 +127,6 @@ router.post('/articleadd', function (req, res) {
 		leibie: leibie,
 		names: names
 	}).save().then(function (info) {
-		console.log('info: ' + info);
 		res.send('添加成功');
 	});
 });
@@ -138,6 +136,33 @@ router.get('/article/del',function (req,res) {
 	article.remove({
 		_id:id
 	}).then(function (info) {
+		res.redirect('/admin/article');
+	})
+});
+//文章修改
+router.get('/article/xiugai', function (req, res) {
+	var id = req.query.id;
+	category.find().then(function (info) {
+		article.findOne({_id: id}).then(function (info2) {
+			res.render('./admin/xiugai.ejs', {data: info, info2: info2})
+		})
+
+	})
+});
+router.post('/article/xiugai', function (req, res) {
+	var title = req.body.title,
+		int = req.body.int,
+		concent = req.body.concent,
+		sel = req.body.sel,
+		names = req.body.names,
+		id = req.body.id
+	article.update({_id: id}, {
+		title: title,
+		int: int,
+		content: concent,
+		sel: sel,
+		names: names
+	}).then(function (newinfo) {
 		res.redirect('/admin/article');
 	})
 })
