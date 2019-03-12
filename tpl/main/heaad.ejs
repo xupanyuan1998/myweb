@@ -183,9 +183,9 @@
             <a class="navbar-brand" href="/index">首页</a>
         </div>
         <div class="collapse navbar-collapse  text-center" id="bs-example-navbar-collapse-1">
-            <ul class="text-center nav navbar-nav">
+            <ul class="text-center nav navbar-nav" id="nav-nav">
                 <%for(var i=0;i<name.length;i++){%>
-                <li><a href="#"><%=name[i].name%></a></li>
+                <li><a href="javascript:;" abc=<%= name[i]._id %>><%= name[i].name %></a></li>
                 <%}%>
             </ul>
         </div>

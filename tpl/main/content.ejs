@@ -5,11 +5,68 @@
             <h3 class="text-center"><%= info2.title %></h3>
             <span class="text-center">作者：<em>admin</em>时间：<em> <%= info2.data.toLocaleDateString() %></em>阅读：<em><%= info2.read %></em> 评论：<em><%= info2.comments.length %></em></span>
             <p><%= info2.content %></p>
+            <input type="hidden" id="va-id" value="<%= info2._id %>">
         </div>
         <div>
-            <h4>评论：<input type="text"></h4>
+            <% if(usersinfo.username === undefined){ %>
+                <P>你还没有登录不能留言哦！</P>
+            <% }else{ %>
+            <div style="height: 50px"><P style="float: left">你好：<span id="btn-user"><%= usersinfo.username %></span>！您可以发表评论
+                </P> <span style="display: block; float: right">当前有 <span
+                            id="comments"><%= info2.comments.length %></span>条评论</span></div>
+            <h4>评论：<input type="text" id="btncon">
+                <button id="btn-msg">提交</button>
+            </h4>
+            <% } %>
+            <div id="msg-div"></div>
         </div>
     </div>
+    <script>
+		//留言
+		var id = $('#va-id').val();
+		$('#btn-msg').on('click', function () {
+			var con = $('#btncon').val(),
+				user = $('#btn-user').html();
+			$.ajax({
+				url: 'api/article/msg',
+				type: 'post',
+				data: {
+					id: id,
+					con: con,
+					user: user,
+				},
+				success: function (res) {
+					$('#msg-div').html('');
+					for (var i = 0; i < res.length; i++) {
+						var odiv = $('<div><p style="height: 30px"><b style="display: block;float: left">' + res[i].user + '</b> <span  style="display: block;float: right">' + res[i].times + '</span></p> <p style="padding: 10px">' + res[i].content + '</p></div>');
+						$('#msg-div').prepend(odiv);
+					}
+					$('#btncon').val('');
+					$('#comments').html(res.length);
+				},
+				error: function (err) {
+					console.log(err)
+				}
+			});
+		});
+		$.ajax({
+			url: 'api/article',
+			type: 'get',
+			data: {
+				id: id
+			},
+			success: function (suc) {
+				$('#msg-div').html('');
+				for (var i = 0; i < suc.length; i++) {
+					var adiv = $('<div><p style="height: 30px"><b style="display: block;float: left">' + suc[i].user + '</b> <span  style="display: block;float: right">' + suc[i].times + '</span></p> <p style="padding: 10px">' + suc[i].content + '</p></div>');
+					$('#msg-div').prepend(adiv);
+				}
+			},
+			error: function (err) {
+				console.log(err)
+			}
+		})
+    </script>
     <% include right.ejs %>
 </div>
 <% include footer.ejs %>

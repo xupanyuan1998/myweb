@@ -84,5 +84,28 @@ $(function () {
 
 
 	})
-
+//分类
+	$('#nav-nav').find('li').find('a').on('click', function () {
+		var id = $(this).attr("abc");
+		var page = 1;
+		var limit = 4;
+		$.ajax({
+			url: 'api/fenlei',
+			type: 'get',
+			data: {
+				id: id,
+				limit: limit
+			},
+			success: function (res) {
+				$('#content-admion').html('');
+				for (var i = 0; i < res.length; i++) {
+					var odiv = $('<div class="thumbnail"><h3 class="text-center">' + res[i].title + '</h3><span class="text-center">作者：<em>admin</em>时间：<em> ' + res[i].data + '</em>阅读：<em>' + res[i].read + '</em> 评论：<em>' + res[i].comments.length + '</em></span><p>' + res[i].int + '</p><a href="/content?id=' + res[i]._id + '" class="btn or" role="button" target="_blank">阅读全文</a></div>');
+					$('#content-admion').prepend(odiv);
+				}
+			},
+			error: function (err) {
+				console.log(err)
+			}
+		})
+	})
 });

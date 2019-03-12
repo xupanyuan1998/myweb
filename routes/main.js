@@ -34,6 +34,7 @@ router.get('/index',function (req,res) {
 		})
 	})
 });
+//纹章内页
 router.get('/content',function (req,res) {
 	var id=req.query.id;
 	category.find().then(function (info) {
@@ -42,8 +43,8 @@ router.get('/content',function (req,res) {
 		}).then(function (info2) {
 			info2.read++;
 			info2.save();
-			res.render('main/content.ejs',{name:info,info2:info2,usersinfo:req.usersinfo})
+			res.render('main/content.ejs', {name: info, info2: info2, usersinfo: req.usersinfo});
 		})
 	})
-})
+});
 module.exports=router;

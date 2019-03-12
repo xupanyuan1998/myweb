@@ -1,6 +1,7 @@
 //引用中间件
 var express=require('express');
 
+var article = require('../models/article')
 var api=express.Router();
 /*引用创建的数据库*/
 var userTable=require('../models/User');
@@ -115,4 +116,40 @@ api.get('/' + 'user/loginout',function (req,res) {
 		res.end();
 
 });
+//分类
+api.get('/fenlei', function (req, res) {
+	var id = req.query.id;
+	article.find({
+		leibie: id
+	}).then(function (info) {
+		res.send(info);
+		res.end();
+	})
+});
+//评论
+api.post('/article/msg', function (req, res) {
+	var id = req.body.id;
+	var content = req.body.con;
+	var user = req.body.user;
+	article.findOne({_id: id}).then(function (info) {
+		info.comments.push({
+			content: content,
+			user: user,
+			times: new Date()
+		});
+		return info.save();
+	}).then(function (newinfo) {
+		res.send(newinfo.comments);
+		res.end();
+	})
+});
+api.get('/article', function (req, res) {
+	var id = req.query.id;
+	article.findOne({
+		_id: id
+	}).then(function (info) {
+		res.send(info.comments);
+		res.end();
+	});
+})
 module.exports=api;/*将module导出*/

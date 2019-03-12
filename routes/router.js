@@ -155,15 +155,16 @@ router.post('/article/xiugai', function (req, res) {
 		concent = req.body.concent,
 		sel = req.body.sel,
 		names = req.body.names,
-		id = req.body.id
+		id = req.body.id;
 	article.update({_id: id}, {
 		title: title,
 		int: int,
 		content: concent,
-		sel: sel,
+		leibie: sel,
 		names: names
 	}).then(function (newinfo) {
 		res.redirect('/admin/article');
 	})
-})
+});
+
 module.exports = router;
